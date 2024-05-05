@@ -1,5 +1,5 @@
 body{background-color: black;}
-.rectangle{background-color: #000000;}
+.rectangle{background-image: url("https://skm150214.github.io/skmgames/Emptyforweb.png");}
 
 .rectangle:nth-child(1) {
     background-image: url('https://skm150214.github.io/skmgames/stopwgame.png');
