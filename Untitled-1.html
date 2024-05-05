@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Stopwatch</title>
+<link rel="stylesheet" type="text/css" href="untilted-1.css">
+<style>
+    .container {
+        text-align: center;
+        margin-top: 0px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Stopwatch game!</h2>
+    <label for="Options">Select a range:</label><select id="options" onchange="updateText()">
+        <option value="option1">1</option>
+        <option value="option2">0.75</option>
+        <option value="option3">0.5</option>
+        <option value="option4">0.25</option>
+        <option value="option5">0</option>
+        </select>
+    <p id="selectedOptionText"></p>
+    <p id ="text">click between 4s to 6s</p>
+    <p id="timer">00:00:00:000</p>
+    <button id="startStopButton" onclick="startStop()">Start</button>
+    <p id="counter">Clicked between time: 0</p>
+
+</div>
+
+
+<script>
+    var timer;
+    var counterTimer; // Separate timer for the counter
+    var running = false;
+    var hours = 0;
+    var minutes = 0;
+    var seconds = 0;
+    var milliseconds = 0;
+    var counter = 0;
+    var stopped = 0;
+    var mini=4;
+    var maxi=6;
+
+    function startStop() {
+        if (running) {
+            clearInterval(timer);
+            clearInterval(counterTimer); // Clear the counter timer
+            document.getElementById("startStopButton").innerHTML = "Start";
+            // Check if stopped between x1 and x2 seconds
+            stopped = 0;
+            if (seconds >= parseFloat(mini) && seconds <= parseFloat(maxi-1)) {
+                counter++;
+                stopped = 1;
+                document.getElementById("counter").innerHTML = "Clicked between time: " + counter;
+
+          
+            }
+            if (stopped==0) {
+                counter = 0;
+               
+                document.getElementById("counter").innerHTML = "Clicked between time: " + counter;
+             
+            }
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
+            milliseconds = 0;
+            updateDisplay();
+            running = false;
+        } else {
+            timer = setInterval(updateTimer, 1); // Update every 1 millisecond
+            document.getElementById("startStopButton").innerHTML = "Stop";
+            running = true;
+        }
+    }
+
+    function updateTimer() {
+        milliseconds=milliseconds+5;
+        if (milliseconds >= 1000) {
+            milliseconds = 0;
+            seconds++;
+            if (seconds >= 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes >= 60) {
+                    minutes = 0;
+                    hours++;
+                }
+            }
+        }
+        updateCounter(); // Call updateCounter every time to update the counter
+        updateDisplay();
+    }
+
+    function updateCounter() {
+        // Counter is now updated only when the stopwatch is not running
+        if (!running && seconds >= parseFloat(mini) && seconds <= parseFloat(maxi-1)) {
+            counter++;
+            document.getElementById("counter").innerHTML = "Clicked between time: " + counter;
+            
+        }
+    }
+
+    function updateDisplay() {
+        var displayHours = (hours < 10) ? "0" + hours : hours;
+        var displayMinutes = (minutes < 10) ? "0" + minutes : minutes;
+        var displaySeconds = (seconds < 10) ? "0" + seconds : seconds;
+        var displayMilliseconds = (milliseconds < 10) ? "00" + milliseconds : (milliseconds < 100) ? "0" + milliseconds : milliseconds;
+        document.getElementById("timer").innerHTML = displayHours + ":" + displayMinutes + ":" + displaySeconds + ":" + displayMilliseconds;
+    }
+    document.getElementById("text").innerText = "click between " + mini +"s to "+maxi+"s";
+</script>
+<script>
+    function updateText() {
+        var selectElement = document.getElementById("options");
+        var selectedOption = selectElement.options[selectElement.selectedIndex].text;
+        //document.getElementById("selectedOptionText").innerText = "You selected: " + selectedOption; (hide)
+        console.log(selectedOption)
+        mini=((1-selectedOption)+4)
+        maxi=(6-(1-selectedOption))
+        document.getElementById("text").innerText = "click between " + mini +"s to "+maxi+"s";
+    }
+   
+</script>
+</body>
+</html>
