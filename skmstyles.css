@@ -2,6 +2,6 @@ body{background-color: black;}
 .rectangle{background-color: #000000;}
 
 .rectangle:nth-child(1) {
-    background-image: url('unique-image.jpg');
+    background-image: url('https://skm150214.github.io/skmgames/stopwgame.png');
 
 }
