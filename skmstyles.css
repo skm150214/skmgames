@@ -1,7 +1,7 @@
 body{background-color: black;}
-.common-class{background-image: url('common-image.jpg');}
+.rectangle{background-color: #000000;}
 
-.common-class:nth-child(2) {
+.rectangle:nth-child(1) {
     background-image: url('unique-image.jpg');
-    /* Additional styling for the second element */
+
 }
