@@ -111,7 +111,7 @@
     function updateCounter() {
         // Counter is now updated only when the stopwatch is not running
         updateText()
-        if (!running && seconds >= parseFloat(mini) && seconds <= parseFloat(maxi-1)) {
+        if (!running && seconds >= parseFloat(mini) && seconds <= parseFloat(maxi)) {
             counter++;
             document.getElementById("counter").innerHTML = "Clicked between time (In a row): " + counter;
             
