@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stopwatch</title>
-<link rel="stylesheet" type="text/css" href="untilted-1.css">
+<title>Stopwatch game</title>
+<link rel="stylesheet" type="text/css" href="stopwgame.css">
 <style>
     .container {
         text-align: center;
@@ -82,12 +82,13 @@
         var selectedOption = selectElement.options[selectElement.selectedIndex].text;
         //document.getElementById("selectedOptionText").innerText = "You selected: " + selectedOption; (hide)
         console.log(selectedOption)
-        mini=((1-selectedOption)+4)
-        maxi=(6-(1-selectedOption))
+        float mini=((1-selectedOption)+4)
+        float maxi=(6-(1-selectedOption))
         document.getElementById("text").innerText = "click between " + mini +"s to "+maxi+"s";
     }
    
     function updateTimer() {
+        updateText()
         milliseconds=milliseconds+5;
         if (milliseconds >= 1000) {
             milliseconds = 0;
@@ -110,12 +111,13 @@
         updateText()
         if (!running && seconds >= parseFloat(mini) && seconds <= parseFloat(maxi-1)) {
             counter++;
-            document.getElementById("counter").innerHTML = "Clicked between time: " + counter;
+            document.getElementById("counter").innerHTML = "Clicked between time (In a row): " + counter;
             
         }
     }
 
     function updateDisplay() {
+        updateText()
         var displayHours = (hours < 10) ? "0" + hours : hours;
         var displayMinutes = (minutes < 10) ? "0" + minutes : minutes;
         var displaySeconds = (seconds < 10) ? "0" + seconds : seconds;
