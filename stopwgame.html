@@ -62,7 +62,7 @@
             if (stopped==0) {
                 counter = 0;
                
-                document.getElementById("counter").innerHTML = "Clicked between time: " + counter;
+                document.getElementById("counter").innerHTML = "Clicked between time (In a row): " + counter;
              
             }
             hours = 0;
@@ -90,7 +90,6 @@
     }
    
     function updateTimer() {
-        updateText()
         milliseconds=milliseconds+5;
         if (milliseconds >= 1000) {
             milliseconds = 0;
@@ -119,7 +118,6 @@
     }
 
     function updateDisplay() {
-        updateText()
         var displayHours = (hours < 10) ? "0" + hours : hours;
         var displayMinutes = (minutes < 10) ? "0" + minutes : minutes;
         var displaySeconds = (seconds < 10) ? "0" + seconds : seconds;
