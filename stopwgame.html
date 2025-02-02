@@ -56,13 +56,15 @@
             if ((milliseconds/1000) >= parseFloat(mini) && (milliseconds/1000) <= parseFloat(maxi)) {
                 counter++;
                 stopped = 1;
+                console.log("did")
+                console.log(counter)
                 document.getElementById("counter").innerHTML = "Clicked between time: " + counter;
 
           
             }
             if (stopped==0) {
                 counter = 0;
-               
+                console.log("didnt")
                 document.getElementById("counter").innerHTML = "Clicked between time (In a row): " + counter;
              
             }
