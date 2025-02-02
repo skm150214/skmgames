@@ -53,7 +53,7 @@
             // Check if stopped between x1 and x2 seconds
             stopped = 0;
             updateText()
-            if (seconds >= parseFloat(mini) && seconds <= parseFloat(maxi)) {
+            if ((milliseconds/1000) >= parseFloat(mini) && (milliseconds/1000) <= parseFloat(maxi)) {
                 counter++;
                 stopped = 1;
                 document.getElementById("counter").innerHTML = "Clicked between time: " + counter;
