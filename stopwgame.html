@@ -52,7 +52,8 @@
             document.getElementById("startStopButton").innerHTML = "Start";
             // Check if stopped between x1 and x2 seconds
             stopped = 0;
-            if (seconds >= parseFloat(mini) && seconds <= parseFloat(maxi-1)) {
+            updateText()
+            if (seconds >= parseFloat(mini) && seconds <= parseFloat(maxi)) {
                 counter++;
                 stopped = 1;
                 document.getElementById("counter").innerHTML = "Clicked between time: " + counter;
@@ -82,7 +83,7 @@
         var selectedOption = selectElement.options[selectElement.selectedIndex].text;
         //document.getElementById("selectedOptionText").innerText = "You selected: " + selectedOption; (hide)
         console.log(selectedOption)
-        mini=((1-selectedOption)+4)
+        mini=((1-selectedOption)+4) //((1-1)+4 //((1-0.75)+4
         maxi=(6-(1-selectedOption))
         console.log(mini)
         console.log(maxi)
